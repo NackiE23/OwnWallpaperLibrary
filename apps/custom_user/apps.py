@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WallpaperLibraryConfig(AppConfig):
+class CustomUserConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.wallpaper_library'
+    name = 'apps.custom_user'

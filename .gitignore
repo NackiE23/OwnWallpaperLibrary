@@ -3,6 +3,7 @@
 *.pyc
 __pycache__/
 .idea/
-static/
+/static/
 .venv/
 .env
+node_modules/

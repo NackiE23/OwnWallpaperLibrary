@@ -1,0 +1,28 @@
+{
+  "name": "ownwallpaperlibrary",
+  "version": "1.0.0",
+  "description": "The Main Wallpapers API integrated with AWS S3 to store images.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:build": "tailwindcss -i ./apps/wallpaper_library/static/css/styles.css -o ./apps/wallpaper_library/static/css/output.css --minify",
+    "tailwind:watch": "tailwindcss -i ./apps/wallpaper_library/static/css/styles.css -o ./apps/wallpaper_library/static/css/output.css --watch --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NackiE23/OwnWallpaperLibrary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NackiE23/OwnWallpaperLibrary/issues"
+  },
+  "homepage": "https://github.com/NackiE23/OwnWallpaperLibrary#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.0.15"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.15",
+    "@tailwindcss/typography": "^0.5.16"
+  }
+}
