@@ -1,10 +1,25 @@
 {% extends 'wallpaper_library/base.html' %}
 
 {% block content %}
-    <div class="flex">
+    <div class="flex container mx-auto">
         <div class="text-center w-full">
             <h1 class="text-3xl font-bold underline">Wallpaper Library</h1>
             <p>Fuck that tailwind and their 4 version with removed config.js by default. That's my first project</p>
         </div>
+    </div>
+
+    <div class="container mx-auto pt-3 flex items-center flex-wrap text-2xl gap-y-1 gap-x-3">
+        {% for label in labels %}
+            <div class="rounded-xl p-1 flex items-start gap-1 cursor-pointer bg-white hover:bg-primary-dark"
+                 hx-get="{% url 'get_wallpaper_list_by_label' label_pk=label.pk %}" hx-trigger="click" hx-target="#wallpapers"
+                 hx-replace-url="{% url 'index' %}?label={{ label.pk }}">
+                {{ label.name }}
+                <span class="bg-primary text-sm p-0.5 px-1 rounded-xl">{{ label.wallpaper_count }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="wallpapers" class="container mx-auto pt-3 flex flex-wrap">
+        {% if wallpaper_list %}{{ wallpaper_list|safe }}{% endif %}
     </div>
 {% endblock %}

@@ -22,6 +22,7 @@ class S3Field(models.FileField):
 
 
 class Label(models.Model):
+    # TODO: Add MPTT support to the Label model
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 

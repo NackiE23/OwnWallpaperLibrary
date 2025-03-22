@@ -1,0 +1,98 @@
+<h2 class="text-2xl font-bold text-gray-800 text-center w-full">{{ label.name }} Wallpapers</h2>
+
+{% for wallpaper in wallpapers %}
+    <div class="flex flex-col items-center p-2 w-1/1 sm:w-1/2 md:w-1/3 lg:w-1/4">
+        <img src="{{ wallpaper.image_path.url }}" alt="{{ wallpaper.title }}" class="rounded-lg w-full">
+        <div class="flex justify-between w-full mt-2">
+            <span class="text-gray-800">{{ wallpaper.title }}</span>
+            <span class="text-gray-500">{{ wallpaper.created_at|date:"F j, Y" }}</span>
+        </div>
+    </div>
+{% endfor %}
+
+{% if wallpapers.has_other_pages %}
+    <div class="flex justify-center w-full mt-4 mx-auto">
+        <nav class="flex space-x-2">
+
+            {# First Page #}
+            {% if wallpapers.number > 1 %}
+                <button hx-get="{{ get_wallpaper_list_by_label_url }}?page=1"
+                        hx-trigger="click"
+                        hx-target="#wallpapers"
+                        class="px-4 py-2 text-gray-700 rounded-md bg-white hover:bg-primary-dark">
+                    First
+                </button>
+            {% else %}
+                <button disabled
+                        class="px-4 py-2 text-gray-500 rounded-md bg-gray-100 cursor-not-allowed">
+                    First
+                </button>
+            {% endif %}
+
+            {# Previous Page #}
+            {% if wallpapers.has_previous %}
+                <button hx-get="{{ get_wallpaper_list_by_label_url }}?page={{ wallpapers.previous_page_number }}"
+                        hx-trigger="click"
+                        hx-target="#wallpapers"
+                        class="px-4 py-2 text-gray-700 rounded-md bg-white hover:bg-primary-dark">
+                    Prev
+                </button>
+            {% else %}
+                <button disabled
+                        class="px-4 py-2 text-gray-500 rounded-md bg-gray-100 cursor-not-allowed">
+                    Prev
+                </button>
+            {% endif %}
+
+            {# Page Numbers with Ellipsis #}
+            {% for num in elided_page_range %}
+                {% if num == "…" %}
+                    <span class="px-4 py-2 text-gray-500">…</span>
+                {% elif num == wallpapers.number %}
+                    <span class="px-4 py-2 bg-primary-dark text-white rounded-md">
+                        {{ num }}
+                    </span>
+                {% else %}
+                    <button hx-get="{{ get_wallpaper_list_by_label_url }}?page={{ num }}"
+                            hx-trigger="click"
+                            hx-target="#wallpapers"
+                            class="px-4 py-2 text-gray-700 rounded-md bg-white hover:bg-primary-dark">
+                        {{ num }}
+                    </button>
+                {% endif %}
+            {% endfor %}
+
+            {# Next Page #}
+            {% if wallpapers.has_next %}
+                <button hx-get="{{ get_wallpaper_list_by_label_url }}?page={{ wallpapers.next_page_number }}"
+                        hx-trigger="click"
+                        hx-target="#wallpapers"
+                        class="px-4 py-2 text-gray-700 rounded-md bg-white hover:bg-primary-dark">
+                    Next
+                </button>
+            {% else %}
+                <button disabled
+                        class="px-4 py-2 text-gray-500 rounded-md bg-gray-100 cursor-not-allowed">
+                    Next
+                </button>
+            {% endif %}
+
+            {# Last Page #}
+            {% if wallpapers.number < wallpapers.paginator.num_pages %}
+                <button hx-get="{{ get_wallpaper_list_by_label_url }}?page={{ wallpapers.paginator.num_pages }}"
+                        hx-trigger="click"
+                        hx-target="#wallpapers"
+                        class="px-4 py-2 text-gray-700 rounded-md bg-white hover:bg-primary-dark">
+                    Last
+                </button>
+            {% else %}
+                <button disabled
+                        class="px-4 py-2 text-gray-500 rounded-md bg-gray-100 cursor-not-allowed">
+                    Last
+                </button>
+            {% endif %}
+
+        </nav>
+    </div>
+{% endif %}
+

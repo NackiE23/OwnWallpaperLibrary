@@ -7,8 +7,9 @@ The Main Wallpapers API integrated with AWS S3 to store images.
 - Python 3.12
 - Django
 - Django Rest Framework
+- HTMX
 - Tailwindcss
-- AWS S3 Bucket
+- AWS S3
 - PostgreSQL
 
 
