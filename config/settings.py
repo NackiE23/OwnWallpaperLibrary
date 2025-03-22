@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -138,6 +138,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Amazon S3 settings
+AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET')
+AWS_S3_REGION = os.environ.get('AWS_S3_REGION')
+AWS_S3_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_URL = f'https://{AWS_S3_BUCKET}.s3.{AWS_S3_REGION}.amazonaws.com'
 
 # Unfold admin settings
 UNFOLD = {

@@ -1,9 +1,4 @@
-from typing import Any
-
 from django.contrib import admin
-from django.http import HttpRequest
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from unfold.admin import ModelAdmin
 
 from .models import Label, Wallpaper
@@ -12,6 +7,9 @@ from .models import Label, Wallpaper
 @admin.register(Label)
 class LabelAdmin(ModelAdmin):
     search_fields = ('name',)
+    list_display = ('name', 'created_at')
+    fields = ('name', 'created_at')
+    readonly_fields = ('created_at',)
 
 
 @admin.register(Wallpaper)

@@ -2,9 +2,12 @@
 
 The Main Wallpapers API integrated with AWS S3 to store images.
 
+
 ##  Main technologies used:
 - Python 3.12
+- Django
 - Django Rest Framework
+- Tailwindcss
 - AWS S3 Bucket
 - PostgreSQL
 

@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=255)),
-                ('image_path', apps.wallpaper_library.models.S3PathField()),
+                ('image_path', apps.wallpaper_library.models.S3Field()),
                 ('source_url', models.URLField(blank=True, help_text='URL to the original source of the wallpaper', null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
