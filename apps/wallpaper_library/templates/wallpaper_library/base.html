@@ -8,8 +8,12 @@
     <title>{% if title %}{{ title }} | {% endif %}OWL</title>
     <link rel="stylesheet" href="{% static 'css/output.css' %}">
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
 </head>
 <body class="bg-primary">
     {% block content %}{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="{% static 'js/fancybox-config.js' %}"></script>
 </body>
 </html>
